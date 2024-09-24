@@ -32,6 +32,17 @@
         @enderror
     </div>
     <div class="mb-3">
+        <label for="type" class="form lable">Tipo di linguaggio:</label>
+        <select name="type_id" class="form-select" aria-label="Default select example">
+            @foreach ($types as $type)
+            <option value="{{ $type->id }}">{{ $type->name }}</option>    
+            @endforeach
+        </select>
+    </div>
+    @error('title')
+        <small class="text-danger"> {{ $message }}</small>
+    @enderror
+    <div class="mb-3">
         <label for="description" class="form-label">Descrizione</label>
         <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" >{{ $project->description }}</textarea>
         @error('description')

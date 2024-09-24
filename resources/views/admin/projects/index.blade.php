@@ -2,6 +2,14 @@
 
 @section('content')
 
+@if (count($projects) === 0)
+
+    <h1>Nessun progetto listato.</h1>
+
+@else
+    
+
+
 @if (session('deleted'))
  <div class="alert alert-success" role="alert"> {{ session('deleted') }}</div>
 @endif
@@ -44,5 +52,6 @@
             </tbody>
         </table>
     </div>
+@endif
     
 @endsection
