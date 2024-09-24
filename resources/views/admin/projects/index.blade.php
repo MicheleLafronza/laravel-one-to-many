@@ -1,0 +1,48 @@
+@extends('layouts.app')
+
+@section('content')
+
+@if (session('deleted'))
+ <div class="alert alert-success" role="alert"> {{ session('deleted') }}</div>
+@endif
+
+
+    <div
+        class="table-responsive m-5"
+    >
+        <table
+            class="table table-primary"
+        >
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome Progetto</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Tools</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($projects as $project)
+                    <tr>
+                        <td>{{ $project->id }}</td>
+                        <td>{{ $project->title }}</td>
+                        <td>{{ $project->description }}</td>
+                        <td>{{ $project->client }}</td>
+                        <td>
+                            <a href="{{ route('admin.project.show', $project->id) }}" class="btn btn-primary">Details</a>
+                            <a href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('admin.project.destroy', $project) }}" method="POST" onsubmit="return confirm('Sei sicuro di eliminare il progetto {{ $project->title }}?')">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Elimina</button>
+                            </form>
+                          </td>
+                    </tr>    
+                @endforeach
+                
+            </tbody>
+        </table>
+    </div>
+    
+@endsection
