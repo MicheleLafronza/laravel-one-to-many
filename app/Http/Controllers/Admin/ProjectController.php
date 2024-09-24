@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Admin\Project;
+use App\Functions\Helper;
 
 class ProjectController extends Controller
 {
@@ -39,6 +40,7 @@ class ProjectController extends Controller
 
         $new_project = new Project();
         $new_project->fill($project);
+        $new_project->slug = Helper::generateSlug($new_project->title, Project::class);
         $new_project->save();
 
 
@@ -70,6 +72,12 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $project = Project::find($id);
+
+        if($data['title'] === $project->title){
+            $data['slug'] = $project->slug;
+        } else {
+            $data['slug'] = Helper::generateSlug($data['title'], Project::class);
+        }
 
         $project->update($data);
 
