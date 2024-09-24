@@ -5,7 +5,7 @@
 
 <div class="container my-5">
 
-    <h1 class="text-center">Inserisci un nuovo progetto</h1>
+    <h1 class="text-center">Modifica il progetto selezionato</h1>
 
     @if($errors->any())
 

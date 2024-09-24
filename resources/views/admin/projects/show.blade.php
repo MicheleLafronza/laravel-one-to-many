@@ -4,9 +4,10 @@
 
 <div class="card container-fluid">
     <div class="card-body">
-      <h5 class="card-title">{{ $project->title }}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">{{ $project->client }}</h6>
-      <p class="card-text">{{ $project->description }}</p>
+      <h5 class="card-title">Titolo: {{ $project->title }}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Cliente: {{ $project->client }}</h6>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Slug: {{ $project->slug }}</h6>
+      <p class="card-text">Descrizione: {{ $project->description }}</p>
       <a href="{{ route('admin.project.index') }}" class="card-link">Torna all'elenco</a>
     </div>
   </div>

@@ -38,9 +38,7 @@ class ProjectController extends Controller
         $project = $request->all();
 
         $new_project = new Project();
-        $new_project->title = $project['title'];
-        $new_project->description = $project['description'];
-        $new_project->client = $project['client'];
+        $new_project->fill($project);
         $new_project->save();
 
 
@@ -73,10 +71,7 @@ class ProjectController extends Controller
         $data = $request->all();
         $project = Project::find($id);
 
-        $project->title = $data['title'];
-        $project->description = $data['description'];
-        $project->client = $data['client'];
-        $project->save();
+        $project->update($data);
 
         return redirect()->route('admin.project.show', $project);
     }
