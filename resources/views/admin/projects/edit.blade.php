@@ -34,8 +34,12 @@
     <div class="mb-3">
         <label for="type" class="form lable">Tipo di linguaggio:</label>
         <select name="type_id" class="form-select" aria-label="Default select example">
+            <option selected value="">Scegli la tipologia</option>
             @foreach ($types as $type)
-            <option value="{{ $type->id }}">{{ $type->name }}</option>    
+            <option 
+                value="{{ $type->id }}"
+                @if(old('type_id', $project->type?->id) === $type->id) selected @endif
+                >{{ $type->name }}</option>    
             @endforeach
         </select>
     </div>

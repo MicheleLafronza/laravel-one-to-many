@@ -27,6 +27,7 @@
                     <th scope="col">Nome Progetto</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Cliente</th>
+                    <th scope="col">Tipo di linguaggio</th>
                     <th scope="col">Tools</th>
                 </tr>
             </thead>
@@ -37,6 +38,7 @@
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->description }}</td>
                         <td>{{ $project->client }}</td>
+                        <td>{{ $project->type?->name }}
                         <td>
                             <a href="{{ route('admin.project.show', $project->id) }}" class="btn btn-primary">Details</a>
                             <a href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-warning">Edit</a>
